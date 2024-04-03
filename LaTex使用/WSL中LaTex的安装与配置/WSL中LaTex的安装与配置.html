@@ -1,0 +1,681 @@
+<!doctype html>
+<html>
+<head>
+<meta charset='UTF-8'><meta name='viewport' content='width=device-width initial-scale=1'>
+
+<link href='https://fonts.loli.net/css?family=Open+Sans:400italic,700italic,700,400&subset=latin,latin-ext' rel='stylesheet' type='text/css' /><style type='text/css'>html {overflow-x: initial !important;}:root { --bg-color:#ffffff; --text-color:#333333; --select-text-bg-color:#B5D6FC; --select-text-font-color:auto; --monospace:"Lucida Console",Consolas,"Courier",monospace; --title-bar-height:20px; }
+.mac-os-11 { --title-bar-height:28px; }
+html { font-size: 14px; background-color: var(--bg-color); color: var(--text-color); font-family: "Helvetica Neue", Helvetica, Arial, sans-serif; -webkit-font-smoothing: antialiased; }
+body { margin: 0px; padding: 0px; height: auto; inset: 0px; font-size: 1rem; line-height: 1.42857; overflow-x: hidden; background: inherit; tab-size: 4; }
+iframe { margin: auto; }
+a.url { word-break: break-all; }
+a:active, a:hover { outline: 0px; }
+.in-text-selection, ::selection { text-shadow: none; background: var(--select-text-bg-color); color: var(--select-text-font-color); }
+#write { margin: 0px auto; height: auto; width: inherit; word-break: normal; overflow-wrap: break-word; position: relative; white-space: normal; overflow-x: visible; padding-top: 36px; }
+#write.first-line-indent p { text-indent: 2em; }
+#write.first-line-indent li p, #write.first-line-indent p * { text-indent: 0px; }
+#write.first-line-indent li { margin-left: 2em; }
+.for-image #write { padding-left: 8px; padding-right: 8px; }
+body.typora-export { padding-left: 30px; padding-right: 30px; }
+.typora-export .footnote-line, .typora-export li, .typora-export p { white-space: pre-wrap; }
+.typora-export .task-list-item input { pointer-events: none; }
+@media screen and (max-width: 500px) {
+  body.typora-export { padding-left: 0px; padding-right: 0px; }
+  #write { padding-left: 20px; padding-right: 20px; }
+  .CodeMirror-sizer { margin-left: 0px !important; }
+  .CodeMirror-gutters { display: none !important; }
+}
+#write li > figure:last-child { margin-bottom: 0.5rem; }
+#write ol, #write ul { position: relative; }
+img { max-width: 100%; vertical-align: middle; image-orientation: from-image; }
+button, input, select, textarea { color: inherit; font: inherit; }
+input[type="checkbox"], input[type="radio"] { line-height: normal; padding: 0px; }
+*, ::after, ::before { box-sizing: border-box; }
+#write h1, #write h2, #write h3, #write h4, #write h5, #write h6, #write p, #write pre { width: inherit; }
+#write h1, #write h2, #write h3, #write h4, #write h5, #write h6, #write p { position: relative; }
+p { line-height: inherit; }
+h1, h2, h3, h4, h5, h6 { break-after: avoid-page; break-inside: avoid; orphans: 4; }
+p { orphans: 4; }
+h1 { font-size: 2rem; }
+h2 { font-size: 1.8rem; }
+h3 { font-size: 1.6rem; }
+h4 { font-size: 1.4rem; }
+h5 { font-size: 1.2rem; }
+h6 { font-size: 1rem; }
+.md-math-block, .md-rawblock, h1, h2, h3, h4, h5, h6, p { margin-top: 1rem; margin-bottom: 1rem; }
+.hidden { display: none; }
+.md-blockmeta { color: rgb(204, 204, 204); font-weight: 700; font-style: italic; }
+a { cursor: pointer; }
+sup.md-footnote { padding: 2px 4px; background-color: rgba(238, 238, 238, 0.7); color: rgb(85, 85, 85); border-radius: 4px; cursor: pointer; }
+sup.md-footnote a, sup.md-footnote a:hover { color: inherit; text-transform: inherit; text-decoration: inherit; }
+#write input[type="checkbox"] { cursor: pointer; width: inherit; height: inherit; }
+figure { overflow-x: auto; margin: 1.2em 0px; max-width: calc(100% + 16px); padding: 0px; }
+figure > table { margin: 0px; }
+tr { break-inside: avoid; break-after: auto; }
+thead { display: table-header-group; }
+table { border-collapse: collapse; border-spacing: 0px; width: 100%; overflow: auto; break-inside: auto; text-align: left; }
+table.md-table td { min-width: 32px; }
+.CodeMirror-gutters { border-right: 0px; background-color: inherit; }
+.CodeMirror-linenumber { user-select: none; }
+.CodeMirror { text-align: left; }
+.CodeMirror-placeholder { opacity: 0.3; }
+.CodeMirror pre { padding: 0px 4px; }
+.CodeMirror-lines { padding: 0px; }
+div.hr:focus { cursor: none; }
+#write pre { white-space: pre-wrap; }
+#write.fences-no-line-wrapping pre { white-space: pre; }
+#write pre.ty-contain-cm { white-space: normal; }
+.CodeMirror-gutters { margin-right: 4px; }
+.md-fences { font-size: 0.9rem; display: block; break-inside: avoid; text-align: left; overflow: visible; white-space: pre; background: inherit; position: relative !important; }
+.md-fences-adv-panel { width: 100%; margin-top: 10px; text-align: center; padding-top: 0px; padding-bottom: 8px; overflow-x: auto; }
+#write .md-fences.mock-cm { white-space: pre-wrap; }
+.md-fences.md-fences-with-lineno { padding-left: 0px; }
+#write.fences-no-line-wrapping .md-fences.mock-cm { white-space: pre; overflow-x: auto; }
+.md-fences.mock-cm.md-fences-with-lineno { padding-left: 8px; }
+.CodeMirror-line, twitterwidget { break-inside: avoid; }
+.footnotes { opacity: 0.8; font-size: 0.9rem; margin-top: 1em; margin-bottom: 1em; }
+.footnotes + .footnotes { margin-top: 0px; }
+.md-reset { margin: 0px; padding: 0px; border: 0px; outline: 0px; vertical-align: top; background: 0px 0px; text-decoration: none; text-shadow: none; float: none; position: static; width: auto; height: auto; white-space: nowrap; cursor: inherit; -webkit-tap-highlight-color: transparent; line-height: normal; font-weight: 400; text-align: left; box-sizing: content-box; direction: ltr; }
+li div { padding-top: 0px; }
+blockquote { margin: 1rem 0px; }
+li .mathjax-block, li p { margin: 0.5rem 0px; }
+li blockquote { margin: 1rem 0px; }
+li { margin: 0px; position: relative; }
+blockquote > :last-child { margin-bottom: 0px; }
+blockquote > :first-child, li > :first-child { margin-top: 0px; }
+.footnotes-area { color: rgb(136, 136, 136); margin-top: 0.714rem; padding-bottom: 0.143rem; white-space: normal; }
+#write .footnote-line { white-space: pre-wrap; }
+@media print {
+  body, html { border: 1px solid transparent; height: 99%; break-after: avoid; break-before: avoid; font-variant-ligatures: no-common-ligatures; }
+  #write { margin-top: 0px; padding-top: 0px; border-color: transparent !important; }
+  .typora-export * { -webkit-print-color-adjust: exact; }
+  .typora-export #write { break-after: avoid; }
+  .typora-export #write::after { height: 0px; }
+  .is-mac table { break-inside: avoid; }
+  .typora-export-show-outline .typora-export-sidebar { display: none; }
+}
+.footnote-line { margin-top: 0.714em; font-size: 0.7em; }
+a img, img a { cursor: pointer; }
+pre.md-meta-block { font-size: 0.8rem; min-height: 0.8rem; white-space: pre-wrap; background: rgb(204, 204, 204); display: block; overflow-x: hidden; }
+p > .md-image:only-child:not(.md-img-error) img, p > img:only-child { display: block; margin: auto; }
+#write.first-line-indent p > .md-image:only-child:not(.md-img-error) img { left: -2em; position: relative; }
+p > .md-image:only-child { display: inline-block; width: 100%; }
+#write .MathJax_Display { margin: 0.8em 0px 0px; }
+.md-math-block { width: 100%; }
+.md-math-block:not(:empty)::after { display: none; }
+.MathJax_ref { fill: currentcolor; }
+[contenteditable="true"]:active, [contenteditable="true"]:focus, [contenteditable="false"]:active, [contenteditable="false"]:focus { outline: 0px; box-shadow: none; }
+.md-task-list-item { position: relative; list-style-type: none; }
+.task-list-item.md-task-list-item { padding-left: 0px; }
+.md-task-list-item > input { position: absolute; top: 0px; left: 0px; margin-left: -1.2em; margin-top: calc(1em - 10px); border: none; }
+.math { font-size: 1rem; }
+.md-toc { min-height: 3.58rem; position: relative; font-size: 0.9rem; border-radius: 10px; }
+.md-toc-content { position: relative; margin-left: 0px; }
+.md-toc-content::after, .md-toc::after { display: none; }
+.md-toc-item { display: block; color: rgb(65, 131, 196); }
+.md-toc-item a { text-decoration: none; }
+.md-toc-inner:hover { text-decoration: underline; }
+.md-toc-inner { display: inline-block; cursor: pointer; }
+.md-toc-h1 .md-toc-inner { margin-left: 0px; font-weight: 700; }
+.md-toc-h2 .md-toc-inner { margin-left: 2em; }
+.md-toc-h3 .md-toc-inner { margin-left: 4em; }
+.md-toc-h4 .md-toc-inner { margin-left: 6em; }
+.md-toc-h5 .md-toc-inner { margin-left: 8em; }
+.md-toc-h6 .md-toc-inner { margin-left: 10em; }
+@media screen and (max-width: 48em) {
+  .md-toc-h3 .md-toc-inner { margin-left: 3.5em; }
+  .md-toc-h4 .md-toc-inner { margin-left: 5em; }
+  .md-toc-h5 .md-toc-inner { margin-left: 6.5em; }
+  .md-toc-h6 .md-toc-inner { margin-left: 8em; }
+}
+a.md-toc-inner { font-size: inherit; font-style: inherit; font-weight: inherit; line-height: inherit; }
+.footnote-line a:not(.reversefootnote) { color: inherit; }
+.md-attr { display: none; }
+.md-fn-count::after { content: "."; }
+code, pre, samp, tt { font-family: var(--monospace); }
+kbd { margin: 0px 0.1em; padding: 0.1em 0.6em; font-size: 0.8em; color: rgb(36, 39, 41); background: rgb(255, 255, 255); border: 1px solid rgb(173, 179, 185); border-radius: 3px; box-shadow: rgba(12, 13, 14, 0.2) 0px 1px 0px, rgb(255, 255, 255) 0px 0px 0px 2px inset; white-space: nowrap; vertical-align: middle; }
+.md-comment { color: rgb(162, 127, 3); opacity: 0.6; font-family: var(--monospace); }
+code { text-align: left; vertical-align: initial; }
+a.md-print-anchor { white-space: pre !important; border-width: initial !important; border-style: none !important; border-color: initial !important; display: inline-block !important; position: absolute !important; width: 1px !important; right: 0px !important; outline: 0px !important; background: 0px 0px !important; text-decoration: initial !important; text-shadow: initial !important; }
+.os-windows.monocolor-emoji .md-emoji { font-family: "Segoe UI Symbol", sans-serif; }
+.md-diagram-panel > svg { max-width: 100%; }
+[lang="flow"] svg, [lang="mermaid"] svg { max-width: 100%; height: auto; }
+[lang="mermaid"] .node text { font-size: 1rem; }
+table tr th { border-bottom: 0px; }
+video { max-width: 100%; display: block; margin: 0px auto; }
+iframe { max-width: 100%; width: 100%; border: none; }
+.highlight td, .highlight tr { border: 0px; }
+mark { background: rgb(255, 255, 0); color: rgb(0, 0, 0); }
+.md-html-inline .md-plain, .md-html-inline strong, mark .md-inline-math, mark strong { color: inherit; }
+.md-expand mark .md-meta { opacity: 0.3 !important; }
+mark .md-meta { color: rgb(0, 0, 0); }
+@media print {
+  .typora-export h1, .typora-export h2, .typora-export h3, .typora-export h4, .typora-export h5, .typora-export h6 { break-inside: avoid; }
+}
+.md-diagram-panel .messageText { stroke: none !important; }
+.md-diagram-panel .start-state { fill: var(--node-fill); }
+.md-diagram-panel .edgeLabel rect { opacity: 1 !important; }
+.md-fences.md-fences-math { font-size: 1em; }
+.md-fences-advanced:not(.md-focus) { padding: 0px; white-space: nowrap; border: 0px; }
+.md-fences-advanced:not(.md-focus) { background: inherit; }
+.typora-export-show-outline .typora-export-content { max-width: 1440px; margin: auto; display: flex; flex-direction: row; }
+.typora-export-sidebar { width: 300px; font-size: 0.8rem; margin-top: 80px; margin-right: 18px; }
+.typora-export-show-outline #write { --webkit-flex:2; flex: 2 1 0%; }
+.typora-export-sidebar .outline-content { position: fixed; top: 0px; max-height: 100%; overflow: hidden auto; padding-bottom: 30px; padding-top: 60px; width: 300px; }
+@media screen and (max-width: 1024px) {
+  .typora-export-sidebar, .typora-export-sidebar .outline-content { width: 240px; }
+}
+@media screen and (max-width: 800px) {
+  .typora-export-sidebar { display: none; }
+}
+.outline-content li, .outline-content ul { margin-left: 0px; margin-right: 0px; padding-left: 0px; padding-right: 0px; list-style: none; }
+.outline-content ul { margin-top: 0px; margin-bottom: 0px; }
+.outline-content strong { font-weight: 400; }
+.outline-expander { width: 1rem; height: 1.42857rem; position: relative; display: table-cell; vertical-align: middle; cursor: pointer; padding-left: 4px; }
+.outline-expander::before { content: ""; position: relative; font-family: Ionicons; display: inline-block; font-size: 8px; vertical-align: middle; }
+.outline-item { padding-top: 3px; padding-bottom: 3px; cursor: pointer; }
+.outline-expander:hover::before { content: ""; }
+.outline-h1 > .outline-item { padding-left: 0px; }
+.outline-h2 > .outline-item { padding-left: 1em; }
+.outline-h3 > .outline-item { padding-left: 2em; }
+.outline-h4 > .outline-item { padding-left: 3em; }
+.outline-h5 > .outline-item { padding-left: 4em; }
+.outline-h6 > .outline-item { padding-left: 5em; }
+.outline-label { cursor: pointer; display: table-cell; vertical-align: middle; text-decoration: none; color: inherit; }
+.outline-label:hover { text-decoration: underline; }
+.outline-item:hover { border-color: rgb(245, 245, 245); background-color: var(--item-hover-bg-color); }
+.outline-item:hover { margin-left: -28px; margin-right: -28px; border-left: 28px solid transparent; border-right: 28px solid transparent; }
+.outline-item-single .outline-expander::before, .outline-item-single .outline-expander:hover::before { display: none; }
+.outline-item-open > .outline-item > .outline-expander::before { content: ""; }
+.outline-children { display: none; }
+.info-panel-tab-wrapper { display: none; }
+.outline-item-open > .outline-children { display: block; }
+.typora-export .outline-item { padding-top: 1px; padding-bottom: 1px; }
+.typora-export .outline-item:hover { margin-right: -8px; border-right: 8px solid transparent; }
+.typora-export .outline-expander::before { content: "+"; font-family: inherit; top: -1px; }
+.typora-export .outline-expander:hover::before, .typora-export .outline-item-open > .outline-item > .outline-expander::before { content: "−"; }
+.typora-export-collapse-outline .outline-children { display: none; }
+.typora-export-collapse-outline .outline-item-open > .outline-children, .typora-export-no-collapse-outline .outline-children { display: block; }
+.typora-export-no-collapse-outline .outline-expander::before { content: "" !important; }
+.typora-export-show-outline .outline-item-active > .outline-item .outline-label { font-weight: 700; }
+.md-inline-math-container mjx-container { zoom: 0.95; }
+
+
+.CodeMirror { height: auto; }
+.CodeMirror.cm-s-inner { background: inherit; }
+.CodeMirror-scroll { overflow: auto hidden; z-index: 3; }
+.CodeMirror-gutter-filler, .CodeMirror-scrollbar-filler { background-color: rgb(255, 255, 255); }
+.CodeMirror-gutters { border-right: 1px solid rgb(221, 221, 221); background: inherit; white-space: nowrap; }
+.CodeMirror-linenumber { padding: 0px 3px 0px 5px; text-align: right; color: rgb(153, 153, 153); }
+.cm-s-inner .cm-keyword { color: rgb(119, 0, 136); }
+.cm-s-inner .cm-atom, .cm-s-inner.cm-atom { color: rgb(34, 17, 153); }
+.cm-s-inner .cm-number { color: rgb(17, 102, 68); }
+.cm-s-inner .cm-def { color: rgb(0, 0, 255); }
+.cm-s-inner .cm-variable { color: rgb(0, 0, 0); }
+.cm-s-inner .cm-variable-2 { color: rgb(0, 85, 170); }
+.cm-s-inner .cm-variable-3 { color: rgb(0, 136, 85); }
+.cm-s-inner .cm-string { color: rgb(170, 17, 17); }
+.cm-s-inner .cm-property { color: rgb(0, 0, 0); }
+.cm-s-inner .cm-operator { color: rgb(152, 26, 26); }
+.cm-s-inner .cm-comment, .cm-s-inner.cm-comment { color: rgb(170, 85, 0); }
+.cm-s-inner .cm-string-2 { color: rgb(255, 85, 0); }
+.cm-s-inner .cm-meta { color: rgb(85, 85, 85); }
+.cm-s-inner .cm-qualifier { color: rgb(85, 85, 85); }
+.cm-s-inner .cm-builtin { color: rgb(51, 0, 170); }
+.cm-s-inner .cm-bracket { color: rgb(153, 153, 119); }
+.cm-s-inner .cm-tag { color: rgb(17, 119, 0); }
+.cm-s-inner .cm-attribute { color: rgb(0, 0, 204); }
+.cm-s-inner .cm-header, .cm-s-inner.cm-header { color: rgb(0, 0, 255); }
+.cm-s-inner .cm-quote, .cm-s-inner.cm-quote { color: rgb(0, 153, 0); }
+.cm-s-inner .cm-hr, .cm-s-inner.cm-hr { color: rgb(153, 153, 153); }
+.cm-s-inner .cm-link, .cm-s-inner.cm-link { color: rgb(0, 0, 204); }
+.cm-negative { color: rgb(221, 68, 68); }
+.cm-positive { color: rgb(34, 153, 34); }
+.cm-header, .cm-strong { font-weight: 700; }
+.cm-del { text-decoration: line-through; }
+.cm-em { font-style: italic; }
+.cm-link { text-decoration: underline; }
+.cm-error { color: red; }
+.cm-invalidchar { color: red; }
+.cm-constant { color: rgb(38, 139, 210); }
+.cm-defined { color: rgb(181, 137, 0); }
+div.CodeMirror span.CodeMirror-matchingbracket { color: rgb(0, 255, 0); }
+div.CodeMirror span.CodeMirror-nonmatchingbracket { color: rgb(255, 34, 34); }
+.cm-s-inner .CodeMirror-activeline-background { background: inherit; }
+.CodeMirror { position: relative; overflow: hidden; }
+.CodeMirror-scroll { height: 100%; outline: 0px; position: relative; box-sizing: content-box; background: inherit; }
+.CodeMirror-sizer { position: relative; }
+.CodeMirror-gutter-filler, .CodeMirror-hscrollbar, .CodeMirror-scrollbar-filler, .CodeMirror-vscrollbar { position: absolute; z-index: 6; display: none; outline: 0px; }
+.CodeMirror-vscrollbar { right: 0px; top: 0px; overflow: hidden; }
+.CodeMirror-hscrollbar { bottom: 0px; left: 0px; overflow: auto hidden; }
+.CodeMirror-scrollbar-filler { right: 0px; bottom: 0px; }
+.CodeMirror-gutter-filler { left: 0px; bottom: 0px; }
+.CodeMirror-gutters { position: absolute; left: 0px; top: 0px; padding-bottom: 10px; z-index: 3; overflow-y: hidden; }
+.CodeMirror-gutter { white-space: normal; height: 100%; box-sizing: content-box; padding-bottom: 30px; margin-bottom: -32px; display: inline-block; }
+.CodeMirror-gutter-wrapper { position: absolute; z-index: 4; background: 0px 0px !important; border: none !important; }
+.CodeMirror-gutter-background { position: absolute; top: 0px; bottom: 0px; z-index: 4; }
+.CodeMirror-gutter-elt { position: absolute; cursor: default; z-index: 4; }
+.CodeMirror-lines { cursor: text; }
+.CodeMirror pre { border-radius: 0px; border-width: 0px; background: 0px 0px; font-family: inherit; font-size: inherit; margin: 0px; white-space: pre; overflow-wrap: normal; color: inherit; z-index: 2; position: relative; overflow: visible; }
+.CodeMirror-wrap pre { overflow-wrap: break-word; white-space: pre-wrap; word-break: normal; }
+.CodeMirror-code pre { border-right: 30px solid transparent; width: fit-content; }
+.CodeMirror-wrap .CodeMirror-code pre { border-right: none; width: auto; }
+.CodeMirror-linebackground { position: absolute; inset: 0px; z-index: 0; }
+.CodeMirror-linewidget { position: relative; z-index: 2; overflow: auto; }
+.CodeMirror-wrap .CodeMirror-scroll { overflow-x: hidden; }
+.CodeMirror-measure { position: absolute; width: 100%; height: 0px; overflow: hidden; visibility: hidden; }
+.CodeMirror-measure pre { position: static; }
+.CodeMirror div.CodeMirror-cursor { position: absolute; visibility: hidden; border-right: none; width: 0px; }
+.CodeMirror div.CodeMirror-cursor { visibility: hidden; }
+.CodeMirror-focused div.CodeMirror-cursor { visibility: inherit; }
+.cm-searching { background: rgba(255, 255, 0, 0.4); }
+span.cm-underlined { text-decoration: underline; }
+span.cm-strikethrough { text-decoration: line-through; }
+.cm-tw-syntaxerror { color: rgb(255, 255, 255); background-color: rgb(153, 0, 0); }
+.cm-tw-deleted { text-decoration: line-through; }
+.cm-tw-header5 { font-weight: 700; }
+.cm-tw-listitem:first-child { padding-left: 10px; }
+.cm-tw-box { border-style: solid; border-right-width: 1px; border-bottom-width: 1px; border-left-width: 1px; border-color: inherit; border-top-width: 0px !important; }
+.cm-tw-underline { text-decoration: underline; }
+@media print {
+  .CodeMirror div.CodeMirror-cursor { visibility: hidden; }
+}
+
+
+:root {
+    --side-bar-bg-color: #fafafa;
+    --control-text-color: #777;
+}
+
+@include-when-export url(https://fonts.loli.net/css?family=Open+Sans:400italic,700italic,700,400&subset=latin,latin-ext);
+
+/* open-sans-regular - latin-ext_latin */
+  /* open-sans-italic - latin-ext_latin */
+    /* open-sans-700 - latin-ext_latin */
+    /* open-sans-700italic - latin-ext_latin */
+  html {
+    font-size: 16px;
+    -webkit-font-smoothing: antialiased;
+}
+
+body {
+    font-family: "Open Sans","Clear Sans", "Helvetica Neue", Helvetica, Arial, 'Segoe UI Emoji', sans-serif;
+    color: rgb(51, 51, 51);
+    line-height: 1.6;
+}
+
+#write {
+    max-width: 860px;
+  	margin: 0 auto;
+  	padding: 30px;
+    padding-bottom: 100px;
+}
+
+@media only screen and (min-width: 1400px) {
+	#write {
+		max-width: 1024px;
+	}
+}
+
+@media only screen and (min-width: 1800px) {
+	#write {
+		max-width: 1200px;
+	}
+}
+
+#write > ul:first-child,
+#write > ol:first-child{
+    margin-top: 30px;
+}
+
+a {
+    color: #4183C4;
+}
+h1,
+h2,
+h3,
+h4,
+h5,
+h6 {
+    position: relative;
+    margin-top: 1rem;
+    margin-bottom: 1rem;
+    font-weight: bold;
+    line-height: 1.4;
+    cursor: text;
+}
+h1:hover a.anchor,
+h2:hover a.anchor,
+h3:hover a.anchor,
+h4:hover a.anchor,
+h5:hover a.anchor,
+h6:hover a.anchor {
+    text-decoration: none;
+}
+h1 tt,
+h1 code {
+    font-size: inherit;
+}
+h2 tt,
+h2 code {
+    font-size: inherit;
+}
+h3 tt,
+h3 code {
+    font-size: inherit;
+}
+h4 tt,
+h4 code {
+    font-size: inherit;
+}
+h5 tt,
+h5 code {
+    font-size: inherit;
+}
+h6 tt,
+h6 code {
+    font-size: inherit;
+}
+h1 {
+    font-size: 2.25em;
+    line-height: 1.2;
+    border-bottom: 1px solid #eee;
+}
+h2 {
+    font-size: 1.75em;
+    line-height: 1.225;
+    border-bottom: 1px solid #eee;
+}
+
+/*@media print {
+    .typora-export h1,
+    .typora-export h2 {
+        border-bottom: none;
+        padding-bottom: initial;
+    }
+
+    .typora-export h1::after,
+    .typora-export h2::after {
+        content: "";
+        display: block;
+        height: 100px;
+        margin-top: -96px;
+        border-top: 1px solid #eee;
+    }
+}*/
+
+h3 {
+    font-size: 1.5em;
+    line-height: 1.43;
+}
+h4 {
+    font-size: 1.25em;
+}
+h5 {
+    font-size: 1em;
+}
+h6 {
+   font-size: 1em;
+    color: #777;
+}
+p,
+blockquote,
+ul,
+ol,
+dl,
+table{
+    margin: 0.8em 0;
+}
+li>ol,
+li>ul {
+    margin: 0 0;
+}
+hr {
+    height: 2px;
+    padding: 0;
+    margin: 16px 0;
+    background-color: #e7e7e7;
+    border: 0 none;
+    overflow: hidden;
+    box-sizing: content-box;
+}
+
+li p.first {
+    display: inline-block;
+}
+ul,
+ol {
+    padding-left: 30px;
+}
+ul:first-child,
+ol:first-child {
+    margin-top: 0;
+}
+ul:last-child,
+ol:last-child {
+    margin-bottom: 0;
+}
+blockquote {
+    border-left: 4px solid #dfe2e5;
+    padding: 0 15px;
+    color: #777777;
+}
+blockquote blockquote {
+    padding-right: 0;
+}
+table {
+    padding: 0;
+    word-break: initial;
+}
+table tr {
+    border: 1px solid #dfe2e5;
+    margin: 0;
+    padding: 0;
+}
+table tr:nth-child(2n),
+thead {
+    background-color: #f8f8f8;
+}
+table th {
+    font-weight: bold;
+    border: 1px solid #dfe2e5;
+    border-bottom: 0;
+    margin: 0;
+    padding: 6px 13px;
+}
+table td {
+    border: 1px solid #dfe2e5;
+    margin: 0;
+    padding: 6px 13px;
+}
+table th:first-child,
+table td:first-child {
+    margin-top: 0;
+}
+table th:last-child,
+table td:last-child {
+    margin-bottom: 0;
+}
+
+.CodeMirror-lines {
+    padding-left: 4px;
+}
+
+.code-tooltip {
+    box-shadow: 0 1px 1px 0 rgba(0,28,36,.3);
+    border-top: 1px solid #eef2f2;
+}
+
+.md-fences,
+code,
+tt {
+    border: 1px solid #e7eaed;
+    background-color: #f8f8f8;
+    border-radius: 3px;
+    padding: 0;
+    padding: 2px 4px 0px 4px;
+    font-size: 0.9em;
+}
+
+code {
+    background-color: #f3f4f4;
+    padding: 0 2px 0 2px;
+}
+
+.md-fences {
+    margin-bottom: 15px;
+    margin-top: 15px;
+    padding-top: 8px;
+    padding-bottom: 6px;
+}
+
+
+.md-task-list-item > input {
+  margin-left: -1.3em;
+}
+
+@media print {
+    html {
+        font-size: 13px;
+    }
+    table,
+    pre {
+        page-break-inside: avoid;
+    }
+    pre {
+        word-wrap: break-word;
+    }
+}
+
+.md-fences {
+	background-color: #f8f8f8;
+}
+#write pre.md-meta-block {
+	padding: 1rem;
+    font-size: 85%;
+    line-height: 1.45;
+    background-color: #f7f7f7;
+    border: 0;
+    border-radius: 3px;
+    color: #777777;
+    margin-top: 0 !important;
+}
+
+.mathjax-block>.code-tooltip {
+	bottom: .375rem;
+}
+
+.md-mathjax-midline {
+    background: #fafafa;
+}
+
+#write>h3.md-focus:before{
+	left: -1.5625rem;
+	top: .375rem;
+}
+#write>h4.md-focus:before{
+	left: -1.5625rem;
+	top: .285714286rem;
+}
+#write>h5.md-focus:before{
+	left: -1.5625rem;
+	top: .285714286rem;
+}
+#write>h6.md-focus:before{
+	left: -1.5625rem;
+	top: .285714286rem;
+}
+.md-image>.md-meta {
+    /*border: 1px solid #ddd;*/
+    border-radius: 3px;
+    padding: 2px 0px 0px 4px;
+    font-size: 0.9em;
+    color: inherit;
+}
+
+.md-tag {
+    color: #a7a7a7;
+    opacity: 1;
+}
+
+.md-toc { 
+    margin-top:20px;
+    padding-bottom:20px;
+}
+
+.sidebar-tabs {
+    border-bottom: none;
+}
+
+#typora-quick-open {
+    border: 1px solid #ddd;
+    background-color: #f8f8f8;
+}
+
+#typora-quick-open-item {
+    background-color: #FAFAFA;
+    border-color: #FEFEFE #e5e5e5 #e5e5e5 #eee;
+    border-style: solid;
+    border-width: 1px;
+}
+
+/** focus mode */
+.on-focus-mode blockquote {
+    border-left-color: rgba(85, 85, 85, 0.12);
+}
+
+header, .context-menu, .megamenu-content, footer{
+    font-family: "Segoe UI", "Arial", sans-serif;
+}
+
+.file-node-content:hover .file-node-icon,
+.file-node-content:hover .file-node-open-state{
+    visibility: visible;
+}
+
+.mac-seamless-mode #typora-sidebar {
+    background-color: #fafafa;
+    background-color: var(--side-bar-bg-color);
+}
+
+.md-lang {
+    color: #b4654d;
+}
+
+/*.html-for-mac {
+    --item-hover-bg-color: #E6F0FE;
+}*/
+
+#md-notification .btn {
+    border: 0;
+}
+
+.dropdown-menu .divider {
+    border-color: #e5e5e5;
+    opacity: 0.4;
+}
+
+.ty-preferences .window-content {
+    background-color: #fafafa;
+}
+
+.ty-preferences .nav-group-item.active {
+    color: white;
+    background: #999;
+}
+
+.menu-item-container a.menu-style-btn {
+    background-color: #f5f8fa;
+    background-image: linear-gradient( 180deg , hsla(0, 0%, 100%, 0.8), hsla(0, 0%, 100%, 0)); 
+}
+
+
+
+</style><title>WSL中LaTex的安装与配置</title>
+</head>
+<body class='typora-export os-windows typora-export-show-outline typora-export-collapse-outline'><div class='typora-export-content'>
+<div class="typora-export-sidebar"><div class="outline-content"><li class="outline-item-wrapper outline-h1 outline-item-open"><div class="outline-item"><span class="outline-expander"></span><a class="outline-label" href="#wsl中latex的安装与配置">WSL中LaTex的安装与配置</a></div><ul class="outline-children"><li class="outline-item-wrapper outline-h3 outline-item-single"><div class="outline-item"><span class="outline-expander"></span><a class="outline-label" href="#更换镜像源">更换镜像源</a></div><ul class="outline-children"></ul></li><li class="outline-item-wrapper outline-h3 outline-item-single"><div class="outline-item"><span class="outline-expander"></span><a class="outline-label" href="#使用apt安装texlive">使用apt安装Texlive</a></div><ul class="outline-children"></ul></li><li class="outline-item-wrapper outline-h3 outline-item-single"><div class="outline-item"><span class="outline-expander"></span><a class="outline-label" href="#在wsl中使用windows字体">在wsl中使用windows字体</a></div><ul class="outline-children"></ul></li><li class="outline-item-wrapper outline-h3"><div class="outline-item"><span class="outline-expander"></span><a class="outline-label" href="#在vscode中使用">在VSCode中使用</a></div><ul class="outline-children"><li class="outline-item-wrapper outline-h4 outline-item-single"><div class="outline-item"><span class="outline-expander"></span><a class="outline-label" href="#配置latex-workshop">配置Latex Workshop</a></div><ul class="outline-children"></ul></li></ul></li><li class="outline-item-wrapper outline-h3 outline-item-single"><div class="outline-item"><span class="outline-expander"></span><a class="outline-label" href="#主要参考文档">主要参考文档</a></div><ul class="outline-children"></ul></li></ul></li></div></div><div id='write'  class=''><h1 id='wsl中latex的安装与配置'><span>WSL中LaTex的安装与配置</span></h1><h3 id='更换镜像源'><span>更换镜像源</span></h3><p><span>第一次用WSL跑apt最好先更换合适的镜像源，可以用鱼香ros的一键工具来换源，只需在终端输入以下命令：</span></p><blockquote><pre class="md-fences md-end-block ty-contain-cm modeLoaded" spellcheck="false" lang="bash"><div class="CodeMirror cm-s-inner cm-s-null-scroll CodeMirror-wrap" lang="bash"><div style="overflow: hidden; position: relative; width: 3px; height: 0px; top: 9.33333px; left: 8px;"><textarea autocorrect="off" autocapitalize="off" spellcheck="false" tabindex="0" style="position: absolute; bottom: -1em; padding: 0px; width: 1000px; height: 1em; outline: none;"></textarea></div><div class="CodeMirror-scrollbar-filler" cm-not-content="true"></div><div class="CodeMirror-gutter-filler" cm-not-content="true"></div><div class="CodeMirror-scroll" tabindex="-1"><div class="CodeMirror-sizer" style="margin-left: 0px; margin-bottom: 0px; border-right-width: 0px; padding-right: 0px; padding-bottom: 0px;"><div style="position: relative; top: 0px;"><div class="CodeMirror-lines" role="presentation"><div role="presentation" style="position: relative; outline: none;"><div class="CodeMirror-measure"></div><div class="CodeMirror-measure"></div><div style="position: relative; z-index: 1;"></div><div class="CodeMirror-code" role="presentation"><div class="CodeMirror-activeline" style="position: relative;"><div class="CodeMirror-activeline-background CodeMirror-linebackground"></div><div class="CodeMirror-gutter-background CodeMirror-activeline-gutter" style="left: 0px; width: 0px;"></div><pre class=" CodeMirror-line " role="presentation"><span role="presentation" style="padding-right: 0.1px;"><span class="cm-builtin">wget</span> http://fishros.com/install <span class="cm-attribute">-O</span> fishros &amp;&amp; . fishros</span></pre></div></div></div></div></div></div><div style="position: absolute; height: 0px; width: 1px; border-bottom: 0px solid transparent; top: 23px;"></div><div class="CodeMirror-gutters" style="display: none; height: 23px;"></div></div></div></pre></blockquote><h3 id='使用apt安装texlive'><span>使用apt安装Texlive</span></h3><p><span>输入以下命令：</span></p><blockquote><pre class="md-fences md-end-block ty-contain-cm modeLoaded" spellcheck="false" lang="bash"><div class="CodeMirror cm-s-inner cm-s-null-scroll CodeMirror-wrap" lang="bash"><div style="overflow: hidden; position: relative; width: 3px; height: 0px; top: 9.33333px; left: 8px;"><textarea autocorrect="off" autocapitalize="off" spellcheck="false" tabindex="0" style="position: absolute; bottom: -1em; padding: 0px; width: 1000px; height: 1em; outline: none;"></textarea></div><div class="CodeMirror-scrollbar-filler" cm-not-content="true"></div><div class="CodeMirror-gutter-filler" cm-not-content="true"></div><div class="CodeMirror-scroll" tabindex="-1"><div class="CodeMirror-sizer" style="margin-left: 0px; margin-bottom: 0px; border-right-width: 0px; padding-right: 0px; padding-bottom: 0px;"><div style="position: relative; top: 0px;"><div class="CodeMirror-lines" role="presentation"><div role="presentation" style="position: relative; outline: none;"><div class="CodeMirror-measure"><pre><span>xxxxxxxxxx</span></pre></div><div class="CodeMirror-measure"></div><div style="position: relative; z-index: 1;"></div><div class="CodeMirror-code" role="presentation"><div class="CodeMirror-activeline" style="position: relative;"><div class="CodeMirror-activeline-background CodeMirror-linebackground"></div><div class="CodeMirror-gutter-background CodeMirror-activeline-gutter" style="left: 0px; width: 0px;"></div><pre class=" CodeMirror-line " role="presentation"><span role="presentation" style="padding-right: 0.1px;"><span class="cm-builtin">sudo</span> apt install texlive-full</span></pre></div></div></div></div></div></div><div style="position: absolute; height: 0px; width: 1px; border-bottom: 0px solid transparent; top: 23px;"></div><div class="CodeMirror-gutters" style="display: none; height: 23px;"></div></div></div></pre></blockquote><ul><li><p><span>（通过这种方式安装好的 texlive 不一定是最新的。安装完成后可以用以下命令查看texlive版本：）</span></p><blockquote><pre class="md-fences md-end-block ty-contain-cm modeLoaded" spellcheck="false" lang="bash"><div class="CodeMirror cm-s-inner cm-s-null-scroll CodeMirror-wrap" lang="bash"><div style="overflow: hidden; position: relative; width: 3px; height: 0px; top: 9.33333px; left: 8px;"><textarea autocorrect="off" autocapitalize="off" spellcheck="false" tabindex="0" style="position: absolute; bottom: -1em; padding: 0px; width: 1000px; height: 1em; outline: none;"></textarea></div><div class="CodeMirror-scrollbar-filler" cm-not-content="true"></div><div class="CodeMirror-gutter-filler" cm-not-content="true"></div><div class="CodeMirror-scroll" tabindex="-1"><div class="CodeMirror-sizer" style="margin-left: 0px; margin-bottom: 0px; border-right-width: 0px; padding-right: 0px; padding-bottom: 0px;"><div style="position: relative; top: 0px;"><div class="CodeMirror-lines" role="presentation"><div role="presentation" style="position: relative; outline: none;"><div class="CodeMirror-measure"><pre><span>xxxxxxxxxx</span></pre></div><div class="CodeMirror-measure"></div><div style="position: relative; z-index: 1;"></div><div class="CodeMirror-code" role="presentation"><div class="CodeMirror-activeline" style="position: relative;"><div class="CodeMirror-activeline-background CodeMirror-linebackground"></div><div class="CodeMirror-gutter-background CodeMirror-activeline-gutter" style="left: 0px; width: 0px;"></div><pre class=" CodeMirror-line " role="presentation"><span role="presentation" style="padding-right: 0.1px;">latex <span class="cm-attribute">-v</span></span></pre></div></div></div></div></div></div><div style="position: absolute; height: 0px; width: 1px; border-bottom: 0px solid transparent; top: 23px;"></div><div class="CodeMirror-gutters" style="display: none; height: 23px;"></div></div></div></pre></blockquote></li></ul><h3 id='在wsl中使用windows字体'><span>在wsl中使用windows字体</span></h3><p><span>若希望在wsl中使用windows字体，需安装</span><code>fontconfig</code><span>：</span></p><blockquote><pre class="md-fences md-end-block ty-contain-cm modeLoaded" spellcheck="false" lang="bash"><div class="CodeMirror cm-s-inner cm-s-null-scroll CodeMirror-wrap" lang="bash"><div style="overflow: hidden; position: relative; width: 3px; height: 0px; top: 9.33333px; left: 8px;"><textarea autocorrect="off" autocapitalize="off" spellcheck="false" tabindex="0" style="position: absolute; bottom: -1em; padding: 0px; width: 1000px; height: 1em; outline: none;"></textarea></div><div class="CodeMirror-scrollbar-filler" cm-not-content="true"></div><div class="CodeMirror-gutter-filler" cm-not-content="true"></div><div class="CodeMirror-scroll" tabindex="-1"><div class="CodeMirror-sizer" style="margin-left: 0px; margin-bottom: 0px; border-right-width: 0px; padding-right: 0px; padding-bottom: 0px;"><div style="position: relative; top: 0px;"><div class="CodeMirror-lines" role="presentation"><div role="presentation" style="position: relative; outline: none;"><div class="CodeMirror-measure"><pre><span>xxxxxxxxxx</span></pre></div><div class="CodeMirror-measure"></div><div style="position: relative; z-index: 1;"></div><div class="CodeMirror-code" role="presentation"><div class="CodeMirror-activeline" style="position: relative;"><div class="CodeMirror-activeline-background CodeMirror-linebackground"></div><div class="CodeMirror-gutter-background CodeMirror-activeline-gutter" style="left: 0px; width: 0px;"></div><pre class=" CodeMirror-line " role="presentation"><span role="presentation" style="padding-right: 0.1px;"><span class="cm-builtin">sudo</span> apt install fontconfig</span></pre></div></div></div></div></div></div><div style="position: absolute; height: 0px; width: 1px; border-bottom: 0px solid transparent; top: 23px;"></div><div class="CodeMirror-gutters" style="display: none; height: 23px;"></div></div></div></pre></blockquote><p><span>然后在windows资源管理器中输入</span><code>\\wsl$</code><span>找到</span><code>/etc/fonts/</code><span>，在这个文件夹下新建一个文件</span><code>local.conf</code><span>， 添加以下内容：</span></p><blockquote><pre class="md-fences md-end-block ty-contain-cm modeLoaded" spellcheck="false" lang=""><div class="CodeMirror cm-s-inner cm-s-null-scroll CodeMirror-wrap" lang=""><div style="overflow: hidden; position: relative; width: 3px; height: 0px; top: 9.33333px; left: 8px;"><textarea autocorrect="off" autocapitalize="off" spellcheck="false" tabindex="0" style="position: absolute; bottom: -1em; padding: 0px; width: 1000px; height: 1em; outline: none;"></textarea></div><div class="CodeMirror-scrollbar-filler" cm-not-content="true"></div><div class="CodeMirror-gutter-filler" cm-not-content="true"></div><div class="CodeMirror-scroll" tabindex="-1"><div class="CodeMirror-sizer" style="margin-left: 0px; margin-bottom: 0px; border-right-width: 0px; padding-right: 0px; padding-bottom: 0px;"><div style="position: relative; top: 0px;"><div class="CodeMirror-lines" role="presentation"><div role="presentation" style="position: relative; outline: none;"><div class="CodeMirror-measure"><pre><span>xxxxxxxxxx</span></pre></div><div class="CodeMirror-measure"></div><div style="position: relative; z-index: 1;"></div><div class="CodeMirror-code" role="presentation" style=""><div class="CodeMirror-activeline" style="position: relative;"><div class="CodeMirror-activeline-background CodeMirror-linebackground"></div><div class="CodeMirror-gutter-background CodeMirror-activeline-gutter" style="left: 0px; width: 0px;"></div><pre class=" CodeMirror-line " role="presentation"><span role="presentation" style="padding-right: 0.1px;">&lt;?xml version="1.0"?&gt;</span></pre></div><pre class=" CodeMirror-line " role="presentation"><span role="presentation" style="padding-right: 0.1px;">&lt;!DOCTYPE fontconfig SYSTEM "fonts.dtd"&gt;</span></pre><pre class=" CodeMirror-line " role="presentation"><span role="presentation" style="padding-right: 0.1px;">&lt;fontconfig&gt;</span></pre><pre class=" CodeMirror-line " role="presentation"><span role="presentation" style="padding-right: 0.1px;"> &lt;dir&gt;/mnt/c/Windows/Fonts&lt;/dir&gt;</span></pre><pre class=" CodeMirror-line " role="presentation"><span role="presentation" style="padding-right: 0.1px;">&lt;/fontconfig&gt;</span></pre></div></div></div></div></div><div style="position: absolute; height: 0px; width: 1px; border-bottom: 0px solid transparent; top: 113px;"></div><div class="CodeMirror-gutters" style="display: none; height: 113px;"></div></div></div></pre></blockquote><blockquote><p><strong><span>如果提示无权限修改文件，像这样：</span></strong><img src="data:image/png;base64,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" referrerpolicy="no-referrer"></p><p><span>那么我们就需要提权，在Windows Powershell中输入以下代码（不用纠结当前在哪个路径下）：</span></p><pre class="md-fences md-end-block ty-contain-cm modeLoaded" spellcheck="false" lang=""><div class="CodeMirror cm-s-inner cm-s-null-scroll CodeMirror-wrap" lang=""><div style="overflow: hidden; position: relative; width: 3px; height: 0px; top: 9.33333px; left: 8px;"><textarea autocorrect="off" autocapitalize="off" spellcheck="false" tabindex="0" style="position: absolute; bottom: -1em; padding: 0px; width: 1000px; height: 1em; outline: none;"></textarea></div><div class="CodeMirror-scrollbar-filler" cm-not-content="true"></div><div class="CodeMirror-gutter-filler" cm-not-content="true"></div><div class="CodeMirror-scroll" tabindex="-1"><div class="CodeMirror-sizer" style="margin-left: 0px; margin-bottom: 0px; border-right-width: 0px; padding-right: 0px; padding-bottom: 0px;"><div style="position: relative; top: 0px;"><div class="CodeMirror-lines" role="presentation"><div role="presentation" style="position: relative; outline: none;"><div class="CodeMirror-measure"><pre><span>xxxxxxxxxx</span></pre></div><div class="CodeMirror-measure"></div><div style="position: relative; z-index: 1;"></div><div class="CodeMirror-code" role="presentation"><div class="CodeMirror-activeline" style="position: relative;"><div class="CodeMirror-activeline-background CodeMirror-linebackground"></div><div class="CodeMirror-gutter-background CodeMirror-activeline-gutter" style="left: 0px; width: 0px;"></div><pre class=" CodeMirror-line " role="presentation"><span role="presentation" style="padding-right: 0.1px;">ubuntu2204.exe config --default-user root</span></pre></div></div></div></div></div></div><div style="position: absolute; height: 0px; width: 1px; border-bottom: 0px solid transparent; top: 23px;"></div><div class="CodeMirror-gutters" style="display: none; height: 23px;"></div></div></div></pre><p><span>然后用</span><code>shutdown</code><span>命令关闭wsl后重启它，即可修改文件</span></p><ul><li><strong><span>修改完以后记得改回默认用户（就是一开始安装wsl时让我们创建的那个新用户），否则无法正常访问之前自行创建的文件夹：</span></strong></li></ul><pre class="md-fences md-end-block ty-contain-cm modeLoaded" spellcheck="false" lang=""><div class="CodeMirror cm-s-inner cm-s-null-scroll CodeMirror-wrap" lang=""><div style="overflow: hidden; position: relative; width: 3px; height: 0px; top: 9.33333px; left: 8px;"><textarea autocorrect="off" autocapitalize="off" spellcheck="false" tabindex="0" style="position: absolute; bottom: -1em; padding: 0px; width: 1000px; height: 1em; outline: none;"></textarea></div><div class="CodeMirror-scrollbar-filler" cm-not-content="true"></div><div class="CodeMirror-gutter-filler" cm-not-content="true"></div><div class="CodeMirror-scroll" tabindex="-1"><div class="CodeMirror-sizer" style="margin-left: 0px; margin-bottom: 0px; border-right-width: 0px; padding-right: 0px; padding-bottom: 0px;"><div style="position: relative; top: 0px;"><div class="CodeMirror-lines" role="presentation"><div role="presentation" style="position: relative; outline: none;"><div class="CodeMirror-measure"><pre><span>xxxxxxxxxx</span></pre></div><div class="CodeMirror-measure"></div><div style="position: relative; z-index: 1;"></div><div class="CodeMirror-code" role="presentation"><div class="CodeMirror-activeline" style="position: relative;"><div class="CodeMirror-activeline-background CodeMirror-linebackground"></div><div class="CodeMirror-gutter-background CodeMirror-activeline-gutter" style="left: 0px; width: 0px;"></div><pre class=" CodeMirror-line " role="presentation"><span role="presentation" style="padding-right: 0.1px;">ubuntu2204.exe config --default-user doge &nbsp; //doge是俺创的用户名^_^</span></pre></div></div></div></div></div></div><div style="position: absolute; height: 0px; width: 1px; border-bottom: 0px solid transparent; top: 23px;"></div><div class="CodeMirror-gutters" style="display: none; height: 23px;"></div></div></div></pre><ul><li><span>详情请参考这篇文章：</span><a href='https://blog.csdn.net/qq_33412312/article/details/119720052'><span>Windows直接访问WSL2路径并直接进行读写操作,权限不足的问题_wsl进入ubuntu后没有权限-CSDN博客</span></a></li></ul></blockquote><p><span>然后使用</span><code>fc-cache -fv</code><span>刷新一下字体缓存，就可以使用 Windows 中的字体了。</span></p><h3 id='在vscode中使用'><span>在VSCode中使用</span></h3><h4 id='配置latex-workshop'><span>配置Latex Workshop</span></h4><p><span>在 VSCode 界面下按下 F1，然后键入“setjson”，点击“首选项: 打开用户设置(JSON)”</span></p><p><span>然后将以下代码放入设置区（记得要放在花括号里面而不是外面）：</span></p><blockquote><pre class="md-fences md-end-block ty-contain-cm modeLoaded" spellcheck="false" lang="json" style="break-inside: unset;"><div class="CodeMirror cm-s-inner cm-s-null-scroll CodeMirror-wrap" lang="json"><div style="overflow: hidden; position: relative; width: 3px; height: 0px; top: 9.33333px; left: 8px;"><textarea autocorrect="off" autocapitalize="off" spellcheck="false" tabindex="0" style="position: absolute; bottom: -1em; padding: 0px; width: 1000px; height: 1em; outline: none;"></textarea></div><div class="CodeMirror-scrollbar-filler" cm-not-content="true"></div><div class="CodeMirror-gutter-filler" cm-not-content="true"></div><div class="CodeMirror-scroll" tabindex="-1"><div class="CodeMirror-sizer" style="margin-left: 0px; margin-bottom: 0px; border-right-width: 0px; padding-right: 0px; padding-bottom: 0px;"><div style="position: relative; top: 0px;"><div class="CodeMirror-lines" role="presentation"><div role="presentation" style="position: relative; outline: none;"><div class="CodeMirror-measure"><span><span>​</span>x</span></div><div class="CodeMirror-measure"></div><div style="position: relative; z-index: 1;"></div><div class="CodeMirror-code" role="presentation" style=""><div class="CodeMirror-activeline" style="position: relative;"><div class="CodeMirror-activeline-background CodeMirror-linebackground"></div><div class="CodeMirror-gutter-background CodeMirror-activeline-gutter" style="left: 0px; width: 0px;"></div><pre class=" CodeMirror-line " role="presentation"><span role="presentation" style="padding-right: 0.1px;"><span class="cm-string">"latex-workshop.latex.tools"</span>: [</span></pre></div><pre class=" CodeMirror-line " role="presentation"><span role="presentation" style="padding-right: 0.1px;"> {</span></pre><pre class=" CodeMirror-line " role="presentation"><span role="presentation" style="padding-right: 0.1px;"> &nbsp; &nbsp; <span class="cm-comment">// 编译工具和命令</span></span></pre><pre class=" CodeMirror-line " role="presentation"><span role="presentation" style="padding-right: 0.1px;"> &nbsp; &nbsp; <span class="cm-string cm-property">"name"</span>: <span class="cm-string">"xelatex"</span>,</span></pre><pre class=" CodeMirror-line " role="presentation"><span role="presentation" style="padding-right: 0.1px;"> &nbsp; &nbsp; <span class="cm-string cm-property">"command"</span>: <span class="cm-string">"xelatex"</span>,</span></pre><pre class=" CodeMirror-line " role="presentation"><span role="presentation" style="padding-right: 0.1px;"> &nbsp; &nbsp; <span class="cm-string cm-property">"args"</span>: [</span></pre><pre class=" CodeMirror-line " role="presentation"><span role="presentation" style="padding-right: 0.1px;"> &nbsp; &nbsp; &nbsp; &nbsp; <span class="cm-string">"-synctex=1"</span>,</span></pre><pre class=" CodeMirror-line " role="presentation"><span role="presentation" style="padding-right: 0.1px;"> &nbsp; &nbsp; &nbsp; &nbsp; <span class="cm-string">"-interaction=nonstopmode"</span>,</span></pre><pre class=" CodeMirror-line " role="presentation"><span role="presentation" style="padding-right: 0.1px;"> &nbsp; &nbsp; &nbsp; &nbsp; <span class="cm-string">"-file-line-error"</span>,</span></pre><pre class=" CodeMirror-line " role="presentation"><span role="presentation" style="padding-right: 0.1px;"> &nbsp; &nbsp; &nbsp; &nbsp; <span class="cm-string">"-pdf"</span>,</span></pre><pre class=" CodeMirror-line " role="presentation"><span role="presentation" style="padding-right: 0.1px;"> &nbsp; &nbsp; &nbsp; &nbsp; <span class="cm-string">"%DOCFILE%"</span></span></pre><pre class=" CodeMirror-line " role="presentation"><span role="presentation" style="padding-right: 0.1px;"> &nbsp; &nbsp; ]</span></pre><pre class=" CodeMirror-line " role="presentation"><span role="presentation" style="padding-right: 0.1px;"> },</span></pre><pre class=" CodeMirror-line " role="presentation"><span role="presentation" style="padding-right: 0.1px;"> {</span></pre><pre class=" CodeMirror-line " role="presentation"><span role="presentation" style="padding-right: 0.1px;"> &nbsp; &nbsp; <span class="cm-string cm-property">"name"</span>: <span class="cm-string">"pdflatex"</span>,</span></pre><pre class=" CodeMirror-line " role="presentation"><span role="presentation" style="padding-right: 0.1px;"> &nbsp; &nbsp; <span class="cm-string cm-property">"command"</span>: <span class="cm-string">"pdflatex"</span>,</span></pre><pre class=" CodeMirror-line " role="presentation"><span role="presentation" style="padding-right: 0.1px;"> &nbsp; &nbsp; <span class="cm-string cm-property">"args"</span>: [</span></pre><pre class=" CodeMirror-line " role="presentation"><span role="presentation" style="padding-right: 0.1px;"> &nbsp; &nbsp; &nbsp; &nbsp; <span class="cm-string">"-synctex=1"</span>,</span></pre><pre class=" CodeMirror-line " role="presentation"><span role="presentation" style="padding-right: 0.1px;"> &nbsp; &nbsp; &nbsp; &nbsp; <span class="cm-string">"-interaction=nonstopmode"</span>,</span></pre><pre class=" CodeMirror-line " role="presentation"><span role="presentation" style="padding-right: 0.1px;"> &nbsp; &nbsp; &nbsp; &nbsp; <span class="cm-string">"-file-line-error"</span>,</span></pre><pre class=" CodeMirror-line " role="presentation"><span role="presentation" style="padding-right: 0.1px;"> &nbsp; &nbsp; &nbsp; &nbsp; <span class="cm-string">"%DOCFILE%"</span></span></pre><pre class=" CodeMirror-line " role="presentation"><span role="presentation" style="padding-right: 0.1px;"> &nbsp; &nbsp; ]</span></pre><pre class=" CodeMirror-line " role="presentation"><span role="presentation" style="padding-right: 0.1px;"> },</span></pre><pre class=" CodeMirror-line " role="presentation"><span role="presentation" style="padding-right: 0.1px;"> {</span></pre><pre class=" CodeMirror-line " role="presentation"><span role="presentation" style="padding-right: 0.1px;"> &nbsp; &nbsp; <span class="cm-string cm-property">"name"</span>: <span class="cm-string">"bibtex"</span>,</span></pre><pre class=" CodeMirror-line " role="presentation"><span role="presentation" style="padding-right: 0.1px;"> &nbsp; &nbsp; <span class="cm-string cm-property">"command"</span>: <span class="cm-string">"bibtex"</span>,</span></pre><pre class=" CodeMirror-line " role="presentation"><span role="presentation" style="padding-right: 0.1px;"> &nbsp; &nbsp; <span class="cm-string cm-property">"args"</span>: [</span></pre><pre class=" CodeMirror-line " role="presentation"><span role="presentation" style="padding-right: 0.1px;"> &nbsp; &nbsp; &nbsp; &nbsp; <span class="cm-string">"%DOCFILE%"</span></span></pre><pre class=" CodeMirror-line " role="presentation"><span role="presentation" style="padding-right: 0.1px;"> &nbsp; &nbsp; ]</span></pre><pre class=" CodeMirror-line " role="presentation"><span role="presentation" style="padding-right: 0.1px;"> }</span></pre><pre class=" CodeMirror-line " role="presentation"><span role="presentation" style="padding-right: 0.1px;">],</span></pre><pre class=" CodeMirror-line " role="presentation"><span role="presentation" style="padding-right: 0.1px;"><span cm-text="" cm-zwsp="">
+</span></span></pre><pre class=" CodeMirror-line " role="presentation"><span role="presentation" style="padding-right: 0.1px;"><span class="cm-string">"latex-workshop.latex.recipes"</span>: [</span></pre><pre class=" CodeMirror-line " role="presentation"><span role="presentation" style="padding-right: 0.1px;"> &nbsp; &nbsp; {</span></pre><pre class=" CodeMirror-line " role="presentation"><span role="presentation" style="padding-right: 0.1px;"> &nbsp; &nbsp; &nbsp; &nbsp; <span class="cm-string cm-property">"name"</span>: <span class="cm-string">"xelatex"</span>,</span></pre><pre class=" CodeMirror-line " role="presentation"><span role="presentation" style="padding-right: 0.1px;"> &nbsp; &nbsp; &nbsp; &nbsp; <span class="cm-string cm-property">"tools"</span>: [</span></pre><pre class=" CodeMirror-line " role="presentation"><span role="presentation" style="padding-right: 0.1px;"> &nbsp; &nbsp; &nbsp; &nbsp; &nbsp; &nbsp; <span class="cm-string">"xelatex"</span></span></pre><pre class=" CodeMirror-line " role="presentation"><span role="presentation" style="padding-right: 0.1px;"> &nbsp; &nbsp; &nbsp; &nbsp; ]</span></pre><pre class=" CodeMirror-line " role="presentation"><span role="presentation" style="padding-right: 0.1px;"> &nbsp; &nbsp; },</span></pre><pre class=" CodeMirror-line " role="presentation"><span role="presentation" style="padding-right: 0.1px;"> &nbsp; &nbsp; {</span></pre><pre class=" CodeMirror-line " role="presentation"><span role="presentation" style="padding-right: 0.1px;"> &nbsp; &nbsp; &nbsp; &nbsp; <span class="cm-string cm-property">"name"</span>: <span class="cm-string">"pdflatex -&gt; bibtex"</span>,</span></pre><pre class=" CodeMirror-line " role="presentation"><span role="presentation" style="padding-right: 0.1px;"> &nbsp; &nbsp; &nbsp; &nbsp; <span class="cm-string cm-property">"tools"</span>: [</span></pre><pre class=" CodeMirror-line " role="presentation"><span role="presentation" style="padding-right: 0.1px;"> &nbsp; &nbsp; &nbsp; &nbsp; &nbsp; &nbsp; <span class="cm-string">"pdflatex"</span>,</span></pre><pre class=" CodeMirror-line " role="presentation"><span role="presentation" style="padding-right: 0.1px;"> &nbsp; &nbsp; &nbsp; &nbsp; &nbsp; &nbsp; <span class="cm-string">"bibtex"</span></span></pre><pre class=" CodeMirror-line " role="presentation"><span role="presentation" style="padding-right: 0.1px;"> &nbsp; &nbsp; &nbsp; &nbsp; ]</span></pre><pre class=" CodeMirror-line " role="presentation"><span role="presentation" style="padding-right: 0.1px;"> &nbsp; &nbsp; },</span></pre><pre class=" CodeMirror-line " role="presentation"><span role="presentation" style="padding-right: 0.1px;"> &nbsp; &nbsp; {</span></pre><pre class=" CodeMirror-line " role="presentation"><span role="presentation" style="padding-right: 0.1px;"> &nbsp; &nbsp; &nbsp; &nbsp; <span class="cm-string cm-property">"name"</span>: <span class="cm-string">"pdflatex -&gt; bibtex -&gt; pdflatex*2"</span>,</span></pre><pre class=" CodeMirror-line " role="presentation"><span role="presentation" style="padding-right: 0.1px;"> &nbsp; &nbsp; &nbsp; &nbsp; <span class="cm-string cm-property">"tools"</span>: [</span></pre><pre class=" CodeMirror-line " role="presentation"><span role="presentation" style="padding-right: 0.1px;"> &nbsp; &nbsp; &nbsp; &nbsp; &nbsp; &nbsp; <span class="cm-string">"pdflatex"</span>,</span></pre><pre class=" CodeMirror-line " role="presentation"><span role="presentation" style="padding-right: 0.1px;"> &nbsp; &nbsp; &nbsp; &nbsp; &nbsp; &nbsp; <span class="cm-string">"bibtex"</span>,</span></pre><pre class=" CodeMirror-line " role="presentation"><span role="presentation" style="padding-right: 0.1px;"> &nbsp; &nbsp; &nbsp; &nbsp; &nbsp; &nbsp; <span class="cm-string">"pdflatex"</span>,</span></pre><pre class=" CodeMirror-line " role="presentation"><span role="presentation" style="padding-right: 0.1px;"> &nbsp; &nbsp; &nbsp; &nbsp; &nbsp; &nbsp; <span class="cm-string">"pdflatex"</span></span></pre><pre class=" CodeMirror-line " role="presentation"><span role="presentation" style="padding-right: 0.1px;"> &nbsp; &nbsp; &nbsp; &nbsp; ]</span></pre><pre class=" CodeMirror-line " role="presentation"><span role="presentation" style="padding-right: 0.1px;"> &nbsp; &nbsp; },</span></pre><pre class=" CodeMirror-line " role="presentation"><span role="presentation" style="padding-right: 0.1px;"> &nbsp; &nbsp; {</span></pre><pre class=" CodeMirror-line " role="presentation"><span role="presentation" style="padding-right: 0.1px;"> &nbsp; &nbsp; &nbsp; &nbsp; <span class="cm-string cm-property">"name"</span>: <span class="cm-string">"xelatex -&gt; bibtex -&gt; xelatex*2"</span>,</span></pre><pre class=" CodeMirror-line " role="presentation"><span role="presentation" style="padding-right: 0.1px;"> &nbsp; &nbsp; &nbsp; &nbsp; <span class="cm-string cm-property">"tools"</span>: [</span></pre><pre class=" CodeMirror-line " role="presentation"><span role="presentation" style="padding-right: 0.1px;"> &nbsp; &nbsp; &nbsp; &nbsp; <span class="cm-string">"xelatex"</span>,</span></pre><pre class=" CodeMirror-line " role="presentation"><span role="presentation" style="padding-right: 0.1px;"> &nbsp; &nbsp; &nbsp; &nbsp; <span class="cm-string">"bibtex"</span>,</span></pre><pre class=" CodeMirror-line " role="presentation"><span role="presentation" style="padding-right: 0.1px;"> &nbsp; &nbsp; &nbsp; &nbsp; <span class="cm-string">"xelatex"</span>,</span></pre><pre class=" CodeMirror-line " role="presentation"><span role="presentation" style="padding-right: 0.1px;"> &nbsp; &nbsp; &nbsp; &nbsp; <span class="cm-string">"xelatex"</span></span></pre><pre class=" CodeMirror-line " role="presentation"><span role="presentation" style="padding-right: 0.1px;"> &nbsp; &nbsp; &nbsp; &nbsp; ]</span></pre><pre class=" CodeMirror-line " role="presentation"><span role="presentation" style="padding-right: 0.1px;"> &nbsp; &nbsp; },</span></pre><pre class=" CodeMirror-line " role="presentation"><span role="presentation" style="padding-right: 0.1px;"> &nbsp; &nbsp; {</span></pre><pre class=" CodeMirror-line " role="presentation"><span role="presentation" style="padding-right: 0.1px;"> &nbsp; &nbsp; &nbsp; &nbsp; <span class="cm-string cm-property">"name"</span>: <span class="cm-string">"xelatex -&gt; bibtex -&gt; xelatex"</span>,</span></pre><pre class=" CodeMirror-line " role="presentation"><span role="presentation" style="padding-right: 0.1px;"> &nbsp; &nbsp; &nbsp; &nbsp; <span class="cm-string cm-property">"tools"</span>: [</span></pre><pre class=" CodeMirror-line " role="presentation"><span role="presentation" style="padding-right: 0.1px;"> &nbsp; &nbsp; &nbsp; &nbsp; <span class="cm-string">"xelatex"</span>,</span></pre><pre class=" CodeMirror-line " role="presentation"><span role="presentation" style="padding-right: 0.1px;"> &nbsp; &nbsp; &nbsp; &nbsp; <span class="cm-string">"bibtex"</span>,</span></pre><pre class=" CodeMirror-line " role="presentation"><span role="presentation" style="padding-right: 0.1px;"> &nbsp; &nbsp; &nbsp; &nbsp; <span class="cm-string">"xelatex"</span></span></pre><pre class=" CodeMirror-line " role="presentation"><span role="presentation" style="padding-right: 0.1px;"> &nbsp; &nbsp; &nbsp; &nbsp; ]</span></pre><pre class=" CodeMirror-line " role="presentation"><span role="presentation" style="padding-right: 0.1px;"> &nbsp; &nbsp; }</span></pre><pre class=" CodeMirror-line " role="presentation"><span role="presentation" style="padding-right: 0.1px;"> ],</span></pre><pre class=" CodeMirror-line " role="presentation"><span role="presentation" style="padding-right: 0.1px;"> <span class="cm-string">"latex-workshop.view.pdf.viewer"</span>: <span class="cm-string">"tab"</span>,</span></pre><pre class=" CodeMirror-line " role="presentation"><span role="presentation" style="padding-right: 0.1px;"> <span class="cm-string">"latex-workshop.latex.clean.fileTypes"</span>: [</span></pre><pre class=" CodeMirror-line " role="presentation"><span role="presentation" style="padding-right: 0.1px;"> &nbsp; &nbsp; <span class="cm-string">"*.aux"</span>,</span></pre><pre class=" CodeMirror-line " role="presentation"><span role="presentation" style="padding-right: 0.1px;"> &nbsp; &nbsp; <span class="cm-string">"*.bbl"</span>,</span></pre><pre class=" CodeMirror-line " role="presentation"><span role="presentation" style="padding-right: 0.1px;"> &nbsp; &nbsp; <span class="cm-string">"*.blg"</span>,</span></pre><pre class=" CodeMirror-line " role="presentation"><span role="presentation" style="padding-right: 0.1px;"> &nbsp; &nbsp; <span class="cm-string">"*.idx"</span>,</span></pre><pre class=" CodeMirror-line " role="presentation"><span role="presentation" style="padding-right: 0.1px;"> &nbsp; &nbsp; <span class="cm-string">"*.ind"</span>,</span></pre><pre class=" CodeMirror-line " role="presentation"><span role="presentation" style="padding-right: 0.1px;"> &nbsp; &nbsp; <span class="cm-string">"*.lof"</span>,</span></pre><pre class=" CodeMirror-line " role="presentation"><span role="presentation" style="padding-right: 0.1px;"> &nbsp; &nbsp; <span class="cm-string">"*.lot"</span>,</span></pre><pre class=" CodeMirror-line " role="presentation"><span role="presentation" style="padding-right: 0.1px;"> &nbsp; &nbsp; <span class="cm-string">"*.out"</span>,</span></pre><pre class=" CodeMirror-line " role="presentation"><span role="presentation" style="padding-right: 0.1px;"> &nbsp; &nbsp; <span class="cm-string">"*.toc"</span>,</span></pre><pre class=" CodeMirror-line " role="presentation"><span role="presentation" style="padding-right: 0.1px;"> &nbsp; &nbsp; <span class="cm-string">"*.acn"</span>,</span></pre><pre class=" CodeMirror-line " role="presentation"><span role="presentation" style="padding-right: 0.1px;"> &nbsp; &nbsp; <span class="cm-string">"*.acr"</span>,</span></pre><pre class=" CodeMirror-line " role="presentation"><span role="presentation" style="padding-right: 0.1px;"> &nbsp; &nbsp; <span class="cm-string">"*.alg"</span>,</span></pre><pre class=" CodeMirror-line " role="presentation"><span role="presentation" style="padding-right: 0.1px;"> &nbsp; &nbsp; <span class="cm-string">"*.glg"</span>,</span></pre><pre class=" CodeMirror-line " role="presentation"><span role="presentation" style="padding-right: 0.1px;"> &nbsp; &nbsp; <span class="cm-string">"*.glo"</span>,</span></pre><pre class=" CodeMirror-line " role="presentation"><span role="presentation" style="padding-right: 0.1px;"> &nbsp; &nbsp; <span class="cm-string">"*.gls"</span>,</span></pre><pre class=" CodeMirror-line " role="presentation"><span role="presentation" style="padding-right: 0.1px;"> &nbsp; &nbsp; <span class="cm-string">"*.ist"</span>,</span></pre><pre class=" CodeMirror-line " role="presentation"><span role="presentation" style="padding-right: 0.1px;"> &nbsp; &nbsp; <span class="cm-string">"*.fls"</span>,</span></pre><pre class=" CodeMirror-line " role="presentation"><span role="presentation" style="padding-right: 0.1px;"> &nbsp; &nbsp; <span class="cm-string">"*.log"</span>,</span></pre><pre class=" CodeMirror-line " role="presentation"><span role="presentation" style="padding-right: 0.1px;"> &nbsp; &nbsp; <span class="cm-string">"*.fdb_latexmk"</span></span></pre><pre class=" CodeMirror-line " role="presentation"><span role="presentation" style="padding-right: 0.1px;"> ],</span></pre></div></div></div></div></div><div style="position: absolute; height: 0px; width: 1px; border-bottom: 0px solid transparent; top: 2153px;"></div><div class="CodeMirror-gutters" style="display: none; height: 2153px;"></div></div></div></pre></blockquote><blockquote><ul><li><span>LaTex Workshop的默认编译器是LaTexmk，但是我们不用它，遂不在以上代码中配置它。</span></li></ul></blockquote><p><strong><span>完成以上全部工作后，就可以优雅地用VsCode+WSL来编辑LaTex文档啦（大概^_^）</span></strong></p><h3 id='主要参考文档'><span>主要参考文档</span></h3><p><a href='https://zhuanlan.zhihu.com/p/202865739'><span>在WSL中安装LaTeX - 知乎 (zhihu.com)</span></a></p><p><a href='https://zhuanlan.zhihu.com/p/38178015'><span>使用VSCode编写LaTeX - 知乎 (zhihu.com)</span></a></p><p><a href='https://github.com/James-Yu/LaTeX-Workshop/issues/2595'><span>Skipping undefined tool &quot;xelatex&quot; in recipe &quot;xelatex.&quot; · Issue #2595 · James-Yu/LaTeX-Workshop (github.com)（适用于 Skipping undefined tool &quot;&lt;编译器名&gt;&quot; in recipe &quot;&lt;编译器名&gt;&quot; 报错）</span></a></p><p>&nbsp;</p></div></div>
+
+<script>(function(){var e=document.body.parentElement,t=[],n=null,i=document.body.classList.contains("typora-export-collapse-outline"),r=function(e,t,n){document.addEventListener(e,function(e){if(!e.defaultPrevented)for(var i=e.target;i&&i!=this;i=i.parentNode)if(i.matches(t)){!1===n.call(i,e)&&(e.preventDefault(),e.stopPropagation());break}},!1)};function o(){return e.scrollTop}r("click",".outline-expander",function(e){var t=this.closest(".outline-item-wrapper").classList;return t.contains("outline-item-open")?t.remove("outline-item-open"):t.add("outline-item-open"),d(),!1}),r("click",".outline-item",function(e){var t=this.querySelector(".outline-label");if(location.hash="#"+t.getAttribute("href"),i){var n=this.closest(".outline-item-wrapper").classList;n.contains("outline-item-open")||n.add("outline-item-open"),c(),n.add("outline-item-active")}});var a,s,l=function(){var e=o();n=null;for(var i=0;i<t.length&&t[i][1]-e<60;i++)n=t[i]},c=function(){document.querySelectorAll(".outline-item-active").forEach(e=>e.classList.remove("outline-item-active")),document.querySelectorAll(".outline-item-single.outline-item-open").forEach(e=>e.classList.remove("outline-item-open"))},d=function(){if(n){c();var e=document.querySelector('.outline-label[href="#'+(CSS.escape?CSS.escape(n[0]):n[0])+'"]');if(e)if(i){var t=e.closest(".outline-item-open>ul>.outline-item-wrapper");if(t)t.classList.add("outline-item-active");else{for(var r=(e=e.closest(".outline-item-wrapper")).parentElement.closest(".outline-item-wrapper");r;)r=(e=r).parentElement.closest(".outline-item-wrapper");e.classList.add("outline-item-active")}}else e.closest(".outline-item-wrapper").classList.add("outline-item-active")}};window.addEventListener("scroll",function(e){a&&clearTimeout(a),a=setTimeout(function(){l(),d()},300)});var u=function(){s=setTimeout(function(){!function(){t=[];var e=o();document.querySelector("#write").querySelectorAll("h1, h2, h3, h4, h5, h6").forEach(n=>{var i=n.getAttribute("id");t.push([i,e+n.getBoundingClientRect().y])})}(),l(),d()},300)};window.addEventListener("resize",function(e){s&&clearTimeout(s),u()}),u()})();</script></body>
+</html>
