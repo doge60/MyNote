@@ -54,7 +54,7 @@ ssh user@target_host
 
 若登陆成功，Windows主机终端会显示如下画面：
 
-![](D:\Click\Study\学习笔记\在VScode中远程操控Ubuntu虚拟机的方法\1.png)
+![](1.png)
 
 ## 在VSCode中配置远程编辑
 
@@ -62,25 +62,25 @@ ssh user@target_host
 
 在VSCode扩展商店中搜索`Remote Development`并安装：
 
-![](D:\Click\Study\学习笔记\在VScode中远程操控Ubuntu虚拟机的方法\2.png)
+![](2.png)
 
-![](D:\Click\Study\学习笔记\在VScode中远程操控Ubuntu虚拟机的方法\3.png)
+![](3.png)
 
 安装完成后，vscode左侧多出一个长得像电脑的菜单栏，即远程资源管理器。我们点开远程资源管理器，然后按照下图所示步骤操作：
 
-![](D:\Click\Study\学习笔记\在VScode中远程操控Ubuntu虚拟机的方法\4.png)
+![](4.png)
 
-![](D:\Click\Study\学习笔记\在VScode中远程操控Ubuntu虚拟机的方法\5.png)
+![](5.png)
 
-![](D:\Click\Study\学习笔记\在VScode中远程操控Ubuntu虚拟机的方法\6.png)
+![](6.png)
 
 接着在VSCode的设置-扩展中找到Remote-SSH，将其中的`Show Login Terminal`选中：
 
-![](D:\Click\Study\学习笔记\在VScode中远程操控Ubuntu虚拟机的方法\7.png)
+![](7.png)
 
 做完以上这些后，你就可以在vscode的远程资源管理器中看到一个你配置好了的远程服务器，就可以连接了：
 
-![](D:\Click\Study\学习笔记\在VScode中远程操控Ubuntu虚拟机的方法\8.png)
+![](8.png)
 
 然后就会在当前窗口或新窗口中打开远程界面，在其下弹出的终端中可以看到输入密码的提示，输入目标虚拟机的密码即可。
 
@@ -88,16 +88,16 @@ ssh user@target_host
 
 此时你的vscode就工作在远程服务器中了：
 
-![](D:\Click\Study\学习笔记\在VScode中远程操控Ubuntu虚拟机的方法\9.png)
+![](9.png)
 
 让我们来打开一个文件夹：
 
-![](D:\Click\Study\学习笔记\在VScode中远程操控Ubuntu虚拟机的方法\10.png)
+![](10.png)
 
 此时我们就可以像平常那样直接用vscode的资源管理器来管理我们的文件了。
 如果我们想要打开远程服务器的shell，那么可以像在本地那样直接在终端中打开就好了：
 
-![](D:\Click\Study\学习笔记\在VScode中远程操控Ubuntu虚拟机的方法\11.png)
+![](11.png)
 
 完成！接下来就可以愉快地在VSCode中编辑Ubuntu虚拟机中的文件啦！
 
